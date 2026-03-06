@@ -94,6 +94,39 @@
     .resume-btn:hover{
       background:#555;
     }
+    .sections{
+      margin-top:50px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      width:420px;
+    }
+
+    .section-card{
+      background:white;
+      padding:20px;
+      border-radius:16px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      text-align:left;
+    }
+
+    .section-card h3{
+      margin:0 0 6px 0;
+    }
+
+    .section-card p{
+      font-size:14px;
+      color:#555;
+    }
+
+    .section-card a{
+      display:inline-block;
+      margin-top:10px;
+      font-size:14px;
+      color:#333;
+      text-decoration:none;
+      font-weight:bold;
+    }
   </style>
 </head>
 
@@ -143,5 +176,33 @@
       Download Resume
     </a>
   </section>
+  <!-- Portfolio Sections -->
+    <section class="sections">
+
+      <div class="section-card">
+        <h3>About Me</h3>
+        <p>Learn more about my background and interests.</p>
+        <a href="about.html">View</a>
+      </div>
+
+      <div class="section-card">
+        <h3>Work Experience</h3>
+        <p>Hands-on technical experience in hospitals and engineering environments.</p>
+        <a href="work.html">View</a>
+      </div>
+
+      <div class="section-card">
+        <h3>Research Work</h3>
+        <p>Research projects in biomedical engineering and materials science.</p>
+        <a href="research.html">View</a>
+      </div>
+
+      <div class="section-card">
+        <h3>Education</h3>
+        <p>My academic journey and relevant coursework.</p>
+        <a href="education.html">View</a>
+      </div>
+
+    </section>
 </body>
 </html>
