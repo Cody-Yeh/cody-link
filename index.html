@@ -96,36 +96,46 @@
     }
     .sections{
       margin-top:50px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
+      display:flex;
+      flex-direction:column;
       gap:18px;
-      width:420px;
+      width:460px;
+      max-width:90%;
     }
 
     .section-card{
       background:white;
-      padding:20px;
-      border-radius:16px;
-      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      padding:24px 24px;
+      border-radius:20px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
       text-align:left;
+      transition:0.2s;
+    }
+
+    .section-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 32px rgba(0,0,0,0.12);
     }
 
     .section-card h3{
-      margin:0 0 6px 0;
+      margin:0 0 8px 0;
+      font-size:28px;
     }
 
     .section-card p{
-      font-size:14px;
+      font-size:16px;
       color:#555;
+      line-height:1.6;
+      margin:0;
     }
 
     .section-card a{
       display:inline-block;
-      margin-top:10px;
-      font-size:14px;
-      color:#333;
+      margin-top:14px;
+      font-size:15px;
+      color:#222;
       text-decoration:none;
-      font-weight:bold;
+      font-weight:600;
     }
   </style>
 </head>
@@ -182,25 +192,25 @@
       <div class="section-card">
         <h3>About Me</h3>
         <p>Learn more about my background and interests.</p>
-        <a href="about.html">View</a>
+        <a href="about.html">Explore</a>
       </div>
 
       <div class="section-card">
         <h3>Work Experience</h3>
         <p>Hands-on technical experience in hospitals and engineering environments.</p>
-        <a href="work.html">View</a>
+        <a href="work.html">Explore</a>
       </div>
 
       <div class="section-card">
         <h3>Research Work</h3>
         <p>Research projects in biomedical engineering and materials science.</p>
-        <a href="research.html">View</a>
+        <a href="research.html">Explore</a>
       </div>
 
       <div class="section-card">
         <h3>Education</h3>
         <p>My academic journey and relevant coursework.</p>
-        <a href="education.html">View</a>
+        <a href="education.html">Explore</a>
       </div>
 
     </section>
