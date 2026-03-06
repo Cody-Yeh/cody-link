@@ -148,6 +148,57 @@
       .bento-grid { grid-template-columns: 1fr; }
       .work-exp { grid-column: span 1; }
     }
+
+    /* Education Specific Styling */
+    .edu-entry {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .edu-stats {
+      font-size: 13px;
+      color: var(--secondary-text);
+      margin-top: 4px;
+    }
+
+    .edu-divider {
+      border: 0;
+      border-top: 1px solid #eee;
+      margin: 15px 0;
+    }
+
+    /* Transcript Button */
+    .transcript-btn {
+      font-size: 11px;
+      background: #f0f0f0;
+      color: #555;
+      padding: 5px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .transcript-btn:hover {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    /* Ensure the button doesn't trigger the accordion closure */
+    .transcript-btn i {
+      font-size: 10px;
+    }
   </style>
 </head>
 
@@ -175,10 +226,32 @@
 
     <div class="bento-item" onclick="this.classList.toggle('active')">
       <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-      <p>U of T Graduate.</p>
+      <p>U of T & TMU Graduate.</p>
+      
       <div class="details">
-        <span class="exp-role">Master of Engineering</span>
-        <span class="exp-meta">Materials Science & Engineering</span>
+        <div class="edu-entry">
+          <div class="edu-header">
+            <span class="exp-role">University of Toronto</span>
+            <a href="path/to/uoft-transcript.pdf" target="_blank" class="transcript-btn" onclick="event.stopPropagation();">
+              <i class="fa-solid fa-file-invoice"></i> Transcript
+            </a>
+          </div>
+          <span class="exp-meta">Master of Engineering in Materials Science</span>
+          <p class="edu-stats">GPA: [Your GPA] | 2024 - 2026</p>
+        </div>
+
+        <hr class="edu-divider">
+
+        <div class="edu-entry">
+          <div class="edu-header">
+            <span class="exp-role">Toronto Metropolitan University</span>
+            <a href="path/to/tmu-transcript.pdf" target="_blank" class="transcript-btn" onclick="event.stopPropagation();">
+              <i class="fa-solid fa-file-invoice"></i> Transcript
+            </a>
+          </div>
+          <span class="exp-meta">Bachelor of Engineering [or relevant degree]</span>
+          <p class="edu-stats">GPA: [Your GPA] | 2019 - 2023</p>
+        </div>
       </div>
     </div>
 
