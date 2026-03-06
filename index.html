@@ -1,218 +1,229 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cody Yeh</title>
+  <title>Cody Yeh | Portfolio</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    body{
-      background:#f3e6d8;
-      font-family: Arial;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:70px 16px;
+    :root {
+      --bg-color: #f3e6d8;
+      --card-bg: #ffffff;
+      --primary-text: #2d3436;
+      --secondary-text: #636e72;
+      --accent-color: #333;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    .card{
-      background:white;
-      width:420px;
-      text-align:center;
-      padding:40px 30px;
-      border-radius:22px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    body {
+      background: var(--bg-color);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--primary-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+      margin: 0;
     }
 
-    .avatar{
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      object-fit:cover;
-      display:block;
-      margin:0 auto 18px auto;
+    /* Profile Header */
+    .profile-card {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
     }
 
-    h1{
-      margin:0;
-      font-size:34px;
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    .subtitle{
-      margin:12px 0 22px 0;
-      font-size:14px;
-      color:#333;
+    h1 { margin: 0; font-size: 38px; font-weight: 800; }
+    .subtitle { margin: 10px 0 25px 0; font-size: 16px; color: var(--secondary-text); letter-spacing: 0.5px; }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 26px;
     }
 
-    /* 上面那排大 icon（像你第二張截圖） */
-    .social{
-      display:flex;
-      justify-content:center;
-      gap:34px;
-      font-size:30px;
-      margin:6px 0 26px 0;
+    .social a { color: var(--accent-color); text-decoration: none; transition: var(--transition); }
+    .social a:hover { transform: translateY(-5px); color: #000; }
+
+    /* Bento Grid Container */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 800px;
     }
 
-    .social a{
-      color:#333;
-      text-decoration:none;
-      transition:0.15s;
+    .bento-item {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      transition: var(--transition);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
     }
 
-    .social a:hover{
-      transform:translateY(-2px);
-      opacity:0.85;
-    }
-    .resume{
-      margin-top:40px;
-      text-align:center;
+    .bento-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
 
-    .resume h2{
-      font-size:22px;
-      margin-bottom:10px;
+    /* Highlighted Work Experience */
+    .work-exp { grid-column: span 2; }
+
+    .bento-item h3 {
+      margin: 0 0 10px 0;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .resume p{
-      color:#555;
-      font-size:15px;
-      margin-bottom:20px;
+    .bento-item p { margin: 0; color: var(--secondary-text); font-size: 15px; line-height: 1.5; }
+
+    /* Accordion Content */
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+      margin-top: 0;
     }
 
-    .resume-btn{
-      display:inline-block;
-      background:#333;
-      color:white;
-      padding:12px 22px;
-      border-radius:10px;
-      text-decoration:none;
-      font-size:15px;
+    .bento-item.active .details {
+      max-height: 800px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
     }
 
-    .resume-btn:hover{
-      background:#555;
-    }
-    .sections{
-      margin-top:50px;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      width:460px;
-      max-width:90%;
+    .details ul {
+      padding-left: 20px;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
     }
 
-    .section-card{
-      background:white;
-      padding:24px 24px;
-      border-radius:20px;
-      box-shadow:0 10px 24px rgba(0,0,0,0.08);
-      text-align:left;
-      transition:0.2s;
-    }
+    .details li { margin-bottom: 8px; }
 
-    .section-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 16px 32px rgba(0,0,0,0.12);
+    /* Footer Buttons */
+    .resume-section { margin-top: 40px; text-align: center; }
+    .resume-btn {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+    .resume-btn:hover { background: #000; transform: scale(1.05); }
 
-    .section-card h3{
-      margin:0 0 8px 0;
-      font-size:28px;
-    }
-
-    .section-card p{
-      font-size:16px;
-      color:#555;
-      line-height:1.6;
-      margin:0;
-    }
-
-    .section-card a{
-      display:inline-block;
-      margin-top:14px;
-      font-size:15px;
-      color:#222;
-      text-decoration:none;
-      font-weight:600;
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .work-exp { grid-column: span 1; }
+      h1 { font-size: 30px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
 
-    <!-- 頭像：確保 repo 裡有 profile.jpg -->
-    <img class="avatar" src="profile.jpg" alt="profile">
-
+  <div class="profile-card">
+    <img class="avatar" src="profile.jpg" alt="Cody Yeh">
     <h1>I'm Cody 👋</h1>
     <div class="subtitle">Biomedical Engineer | Materials Science Graduate</div>
-
-    <!-- 一排大 icon（你要的那排） -->
+    
     <div class="social">
-      <a href="mailto:codyyeh0425@gmail.com" target="_blank">
-        <i class="fa-solid fa-envelope"></i>
-      </a>
+      <a href="mailto:codyyeh0425@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/wei-ting-yeh0425/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/Cody-Yeh" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.instagram.com/cody_0425/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </div>
 
-      <a href="https://www.facebook.com/ye.wei.ting.571110" target="_blank" aria-label="Facebook">
-        <i class="fa-brands fa-facebook"></i>
-      </a>
+  <div class="bento-grid">
+    
+    <div class="bento-item work-exp" onclick="this.classList.toggle('active')">
+      <h3><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
+      <p>Technical expertise in clinical engineering and process optimization.</p>
+      <div class="details">
+        <ul>
+          <li><strong>Biomedical Technician</strong> - Maintenance and calibration of advanced medical equipment.</li>
+          <li><strong>Process Engineering Candidate</strong> - Focused on Lean Six Sigma methodologies and manufacturing efficiency.</li>
+          <li>Cross-functional collaboration in high-stakes hospital environments.</li>
+        </ul>
+      </div>
+    </div>
 
-      <a href="https://www.linkedin.com/in/wei-ting-yeh0425/" target="_blank" aria-label="LinkedIn">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
+    <div class="bento-item" onclick="this.classList.toggle('active')">
+      <h3><i class="fa-solid fa-flask"></i> Research</h3>
+      <p>Academic focus on materials science.</p>
+      <div class="details">
+        <ul>
+          <li><strong>Masters Research</strong> - Investigating material properties for biomedical applications.</li>
+          <li>Proficiency in laboratory protocols and technical data analysis.</li>
+        </ul>
+      </div>
+    </div>
 
-      <a href="https://www.instagram.com/cody_0425/" target="_blank" aria-label="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="https://github.com/Cody-Yeh" target="_blank">
-      <i class="fa-brands fa-github"></i>
-      </a>
+    <div class="bento-item" onclick="this.classList.toggle('active')">
+      <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+      <p>Master's degree from U of T.</p>
+      <div class="details">
+        <ul>
+          <li><strong>University of Toronto</strong> - Master of Engineering in Materials Science.</li>
+          <li><strong>Certifications:</strong> Pursuing Lean Six Sigma Yellow Belt & SOLIDWORKS Foundations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bento-item" onclick="this.classList.toggle('active')">
+      <h3><i class="fa-solid fa-users"></i> Activities</h3>
+      <p>Leadership and teamwork.</p>
+      <div class="details">
+        <ul>
+          <li>Volunteering and community engagement projects.</li>
+          <li>Active interest in tech communities and NBA (Toronto Raptors fan).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bento-item" onclick="location.href='about.html'">
+      <h3><i class="fa-solid fa-user"></i> About Me</h3>
+      <p>Discover my story and professional goals.</p>
     </div>
 
   </div>
-  <!-- Resume Section -->
-  <section class="resume">
-    <h2>Resume</h2>
 
-    <p>
-      Download my resume to learn more about my
-      experience in biomedical engineering,
-      materials science, and research.
-    </p>
-
+  <section class="resume-section">
     <a href="resume.pdf" target="_blank" class="resume-btn">
-      Download Resume
+      <i class="fa-solid fa-download"></i> Download Full CV
     </a>
   </section>
-  <!-- Portfolio Sections -->
-    <section class="sections">
 
-      <div class="section-card">
-        <h3>About Me</h3>
-        <p>Learn more about my background and interests.</p>
-        <a href="about.html">Explore</a>
-      </div>
-
-      <div class="section-card">
-        <h3>Work Experience</h3>
-        <p>Hands-on technical experience in hospitals and engineering environments.</p>
-        <a href="work.html">Explore</a>
-      </div>
-
-      <div class="section-card">
-        <h3>Research Work</h3>
-        <p>Research projects in biomedical engineering and materials science.</p>
-        <a href="research.html">Explore</a>
-      </div>
-
-      <div class="section-card">
-        <h3>Education</h3>
-        <p>My academic journey and relevant coursework.</p>
-        <a href="education.html">Explore</a>
-      </div>
-
-    </section>
 </body>
 </html>
