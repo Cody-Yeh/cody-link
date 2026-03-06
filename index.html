@@ -78,7 +78,13 @@
 
     .bento-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
 
-    .work-exp { grid-column: span 2; }
+    .work-exp, .research-card {
+      grid-column: span 2;
+    }
+    .research-card.active .details {
+      max-height: 800px; /* 增加高度限制 */
+      overflow-y: auto;  /* 內容真的太多時會出現內部捲軸 */
+    }
 
     .bento-item h3 {
       margin: 0 0 12px 0;
@@ -162,75 +168,43 @@
 
   <div class="bento-grid">
     
-    <div class="bento-item work-exp" onclick="this.classList.toggle('active')">
-      <h3><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
-      <p>Technical expertise in clinical engineering and process optimization.</p>
-      <div class="details">
-        <div class="exp-entry">
-          <span class="exp-role">Biomedical Technician</span>
-          <span class="exp-meta">Toronto, ON | 2023 - Present</span>
-          <ul>
-            <li>Maintain and calibrate advanced medical equipment to ensure 100% operational safety.</li>
-            <li>Collaborate with clinical teams in high-stakes hospital environments.</li>
-            <li>Optimize process workflows using digital tracking systems.</li>
-          </ul>
-        </div>
-        <div class="exp-entry">
-          <span class="exp-role">Process Engineering Candidate</span>
-          <span class="exp-meta">Lean Six Sigma Projects</span>
-          <ul>
-            <li>Applied Lean Six Sigma methodologies to improve manufacturing efficiency.</li>
-            <li>Conducted data analysis to identify and eliminate process bottlenecks.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bento-item" onclick="this.classList.toggle('active')">
-      <h3><i class="fa-solid fa-flask"></i> Research</h3>
-      <p>Focus on Biomaterials.</p>
-      <div class="details">
-        <div class="exp-entry">
-          <span class="exp-role">Master's Research Candidate</span>
-          <span class="exp-meta">University of Toronto</span>
-          <ul>
-            <li>Investigated material properties for advanced biomedical applications.</li>
-            <li>Developed proficiency in laboratory protocols and technical data analysis.</li>
-          </ul>
-        </div>
-      </div>
+    <div class="bento-item" onclick="location.href='about.html'">
+      <h3><i class="fa-solid fa-user"></i> About Me</h3>
+      <p>My career goals and professional story.</p>
     </div>
 
     <div class="bento-item" onclick="this.classList.toggle('active')">
       <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
       <p>U of T Graduate.</p>
       <div class="details">
-        <div class="exp-entry">
-          <span class="exp-role">Master of Engineering</span>
-          <span class="exp-meta">Materials Science & Engineering</span>
-          <p class="text-xs mt-2" style="font-size: 13px;">Specializing in Biomedical Engineering.</p>
-        </div>
+        <span class="exp-role">Master of Engineering</span>
+        <span class="exp-meta">Materials Science & Engineering</span>
       </div>
     </div>
 
-    <div class="bento-item" onclick="this.classList.toggle('active')">
-      <h3><i class="fa-solid fa-users"></i> Activities</h3>
-      <p>Leadership & Interests.</p>
+    <div class="bento-item work-exp" onclick="this.classList.toggle('active')">
+      <h3><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
+      </div>
+
+    <div class="bento-item research-card" onclick="this.classList.toggle('active')">
+      <h3><i class="fa-solid fa-flask"></i> Research</h3>
+      <p>Detailed overview of my academic and lab projects.</p>
       <div class="details">
-        <ul>
-          <li><strong>Lean Six Sigma:</strong> Pursuing Yellow Belt Certification.</li>
-          <li><strong>Tech:</strong> Learning Python and SOLIDWORKS Foundations.</li>
-          <li><strong>Personal:</strong> Active fan of the Toronto Raptors.</li>
-        </ul>
+        <div class="exp-entry">
+          <span class="exp-role">Thesis: [Your Thesis Title]</span>
+          <ul>
+            <li>Detailed description of your methodology and findings...</li>
+            <li>List your lab equipment and techniques here...</li>
+          </ul>
+        </div>
+        </div>
+    </div>
+
+    <div class="bento-item" style="grid-column: span 2;" onclick="this.classList.toggle('active')">
+      <h3><i class="fa-solid fa-users"></i> Activities</h3>
       </div>
-    </div>
 
-    <div class="bento-item" onclick="location.href='about.html'">
-      <h3><i class="fa-solid fa-user"></i> About Me</h3>
-      <p>My career goals and story.</p>
-    </div>
-
-  </div>
+</div>
 
   <section class="resume-section">
     <a href="resume.pdf" target="_blank" class="resume-btn">
