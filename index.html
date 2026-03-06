@@ -1,109 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cody Yeh</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cody Yeh</title>
 
-<style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-body{
-background:#f3e6d8;
-font-family:Arial;
-display:flex;
-justify-content:center;
-padding-top:100px;
-}
+  <style>
+    body{
+      background:#f3e6d8;
+      font-family: Arial;
+      display:flex;
+      justify-content:center;
+      padding:70px 16px;
+    }
 
-.card{
-background:white;
-width:400px;
-text-align:center;
-padding:40px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
+    .card{
+      background:white;
+      width:420px;
+      text-align:center;
+      padding:40px 30px;
+      border-radius:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    }
 
-img{
-width:100px;
-border-radius:50%;
-}
+    .avatar{
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      object-fit:cover;
+      display:block;
+      margin:0 auto 18px auto;
+    }
 
-.section{
-margin-top:20px;
-background:#f5f5f5;
-padding:15px;
-border-radius:10px;
-}
-.contact{
-margin-top:30px;
-padding-top:20px;
-border-top:1px solid #eee;
-}
+    h1{
+      margin:0;
+      font-size:34px;
+    }
 
-.contact h2{
-margin:0 0 14px 0;
-font-size:22px;
-}
+    .subtitle{
+      margin:12px 0 22px 0;
+      font-size:16px;
+      color:#333;
+    }
 
-.contact-item{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-margin:10px 0;
-font-size:16px;
-}
+    /* 上面那排大 icon（像你第二張截圖） */
+    .social{
+      display:flex;
+      justify-content:center;
+      gap:34px;
+      font-size:30px;
+      margin:6px 0 26px 0;
+    }
 
-.contact-item i{
-font-size:20px;
-width:22px;
-text-align:center;
-color:#555;
-}
+    .social a{
+      color:#333;
+      text-decoration:none;
+      transition:0.15s;
+    }
 
-.contact-item a{
-color:#2b6cb0;
-text-decoration:none;
-}
+    .social a:hover{
+      transform:translateY(-2px);
+      opacity:0.85;
+    }
 
-.contact-item a:hover{
-text-decoration:underline;
-}
-</style>
+    /* Contact 區塊（像你第一張截圖） */
+    .contact{
+      margin-top:10px;
+      padding-top:18px;
+      border-top:1px solid #eee;
+    }
+
+    .contact h2{
+      margin:0 0 14px 0;
+      font-size:26px;
+    }
+
+    .contact-item{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin:10px 0;
+      font-size:16px;
+    }
+
+    .contact-item i{
+      width:22px;
+      text-align:center;
+      font-size:18px;
+      color:#111;
+    }
+
+    .contact-item a{
+      color:#1f6feb;
+      text-decoration:underline;
+    }
+
+    .contact-item a:hover{
+      opacity:0.85;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="card">
 
-<div class="card">
+    <!-- 頭像：確保 repo 裡有 profile.jpg -->
+    <img class="avatar" src="profile.jpg" alt="profile">
 
-<img src="profile.jpg">
+    <h1>I'm Cody 👋</h1>
+    <div class="subtitle">Biomedical &amp; Materials Engineer</div>
 
-<h1>I'm Cody 👋</h1>
+    <!-- 一排大 icon（你要的那排） -->
+    <div class="social">
+      <a href="https://www.google.com" target="_blank" aria-label="Google">
+        <i class="fa-brands fa-google"></i>
+      </a>
 
-<p>
-Biomedical & Materials Engineer
-</p>
+      <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
 
-<div class="contact">
-  <h2>Contact</h2>
+      <a href="https://www.linkedin.com/in/wei-ting-yeh0425/" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
 
-  <div class="contact-item">
-    <i class="fa-solid fa-envelope"></i>
-    <a href="mailto:codyyeh0425@gmail.com">codyyeh0425@gmail.com</a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+
+    <!-- Contact（信箱/LinkedIn/電話） -->
+    <div class="contact">
+      <h2>Contact</h2>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:codyyeh0425@gmail.com">codyyeh0425@gmail.com</a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-brands fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/wei-ting-yeh0425/" target="_blank">LinkedIn</a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:+16479989962">(+1) 647-998-9962</a>
+      </div>
+    </div>
+
   </div>
-
-  <div class="contact-item">
-    <i class="fa-brands fa-linkedin"></i>
-    <a href="https://www.linkedin.com/in/wei-ting-yeh0425/" target="_blank">LinkedIn</a>
-  </div>
-
-  <div class="contact-item">
-    <i class="fa-solid fa-phone"></i>
-    <a href="tel:+16479989962">(+1) 647-998-9962</a>
-  </div>
-</div>
-
-</div>
-
 </body>
 </html>
