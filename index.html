@@ -14,12 +14,12 @@
       --primary-text: #2d3436;
       --secondary-text: #636e72;
       --accent-color: #333;
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     body {
       background: var(--bg-color);
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: var(--primary-text);
       display: flex;
       flex-direction: column;
@@ -35,8 +35,8 @@
       max-width: 800px;
       text-align: center;
       padding: 40px 20px;
-      border-radius: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       margin-bottom: 30px;
     }
 
@@ -47,23 +47,17 @@
       object-fit: cover;
       margin-bottom: 20px;
       border: 4px solid white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
-    h1 { margin: 0; font-size: 38px; font-weight: 800; }
-    .subtitle { margin: 10px 0 25px 0; font-size: 16px; color: var(--secondary-text); letter-spacing: 0.5px; }
+    h1 { margin: 0; font-size: 36px; font-weight: 800; }
+    .subtitle { margin: 10px 0 25px 0; font-size: 16px; color: var(--secondary-text); font-weight: 500; }
 
-    .social {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      font-size: 26px;
-    }
+    .social { display: flex; justify-content: center; gap: 20px; font-size: 24px; }
+    .social a { color: var(--accent-color); text-decoration: none; transition: var(--transition); opacity: 0.8; }
+    .social a:hover { transform: translateY(-3px); opacity: 1; color: #000; }
 
-    .social a { color: var(--accent-color); text-decoration: none; transition: var(--transition); }
-    .social a:hover { transform: translateY(-5px); color: #000; }
-
-    /* Bento Grid Container */
+    /* Bento Grid */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -74,78 +68,79 @@
 
     .bento-item {
       background: var(--card-bg);
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
       transition: var(--transition);
       cursor: pointer;
-      overflow: hidden;
       position: relative;
     }
 
-    .bento-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
+    .bento-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
 
-    /* Highlighted Work Experience */
     .work-exp { grid-column: span 2; }
 
     .bento-item h3 {
-      margin: 0 0 10px 0;
-      font-size: 22px;
+      margin: 0 0 12px 0;
+      font-size: 20px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .bento-item p { margin: 0; color: var(--secondary-text); font-size: 15px; line-height: 1.5; }
+    /* Dynamic Arrow for Accordion */
+    .bento-item h3::after {
+      content: '\f107'; 
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      margin-left: auto;
+      transition: transform 0.3s;
+      font-size: 14px;
+      color: #ccc;
+    }
+    .bento-item.active h3::after { transform: rotate(180deg); }
 
-    /* Accordion Content */
+    .bento-item p { margin: 0; color: var(--secondary-text); font-size: 15px; }
+
+    /* Accordion & Scroll Area */
     .details {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease-in-out;
-      margin-top: 0;
     }
 
     .bento-item.active .details {
-      max-height: 800px;
+      max-height: 500px; /* Limits the height and enables internal scrolling if content is too long */
+      overflow-y: auto;
       margin-top: 20px;
       padding-top: 20px;
-      border-top: 1px solid #eee;
+      border-top: 1px solid #f5f5f5;
     }
 
-    .details ul {
-      padding-left: 20px;
-      color: #444;
-      font-size: 14px;
-      line-height: 1.8;
-      margin: 0;
-    }
+    /* Professional Experience Styling */
+    .exp-entry { margin-bottom: 24px; }
+    .exp-role { font-weight: 700; color: #111; display: block; font-size: 16px; }
+    .exp-meta { font-size: 13px; color: var(--secondary-text); display: block; margin-bottom: 8px; font-weight: 500; }
+    
+    .details ul { padding-left: 20px; margin: 0; color: #444; font-size: 14px; line-height: 1.6; }
+    .details li { margin-bottom: 6px; }
 
-    .details li { margin-bottom: 8px; }
-
-    /* Footer Buttons */
-    .resume-section { margin-top: 40px; text-align: center; }
+    .resume-section { margin-top: 40px; }
     .resume-btn {
       display: inline-block;
-      background: var(--accent-color);
+      background: #222;
       color: white;
-      padding: 14px 30px;
-      border-radius: 50px;
+      padding: 15px 35px;
+      border-radius: 100px;
       text-decoration: none;
       font-weight: 600;
       transition: var(--transition);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
-    .resume-btn:hover { background: #000; transform: scale(1.05); }
+    .resume-btn:hover { background: #000; transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
-    /* Responsive Design */
     @media (max-width: 600px) {
       .bento-grid { grid-template-columns: 1fr; }
       .work-exp { grid-column: span 1; }
-      h1 { font-size: 30px; }
     }
   </style>
 </head>
@@ -171,50 +166,68 @@
       <h3><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
       <p>Technical expertise in clinical engineering and process optimization.</p>
       <div class="details">
-        <ul>
-          <li><strong>Biomedical Technician</strong> - Maintenance and calibration of advanced medical equipment.</li>
-          <li><strong>Process Engineering Candidate</strong> - Focused on Lean Six Sigma methodologies and manufacturing efficiency.</li>
-          <li>Cross-functional collaboration in high-stakes hospital environments.</li>
-        </ul>
+        <div class="exp-entry">
+          <span class="exp-role">Biomedical Technician</span>
+          <span class="exp-meta">Toronto, ON | 2023 - Present</span>
+          <ul>
+            <li>Maintain and calibrate advanced medical equipment to ensure 100% operational safety.</li>
+            <li>Collaborate with clinical teams in high-stakes hospital environments.</li>
+            <li>Optimize process workflows using digital tracking systems.</li>
+          </ul>
+        </div>
+        <div class="exp-entry">
+          <span class="exp-role">Process Engineering Candidate</span>
+          <span class="exp-meta">Lean Six Sigma Projects</span>
+          <ul>
+            <li>Applied Lean Six Sigma methodologies to improve manufacturing efficiency.</li>
+            <li>Conducted data analysis to identify and eliminate process bottlenecks.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="bento-item" onclick="this.classList.toggle('active')">
       <h3><i class="fa-solid fa-flask"></i> Research</h3>
-      <p>Academic focus on materials science.</p>
+      <p>Focus on Biomaterials.</p>
       <div class="details">
-        <ul>
-          <li><strong>Masters Research</strong> - Investigating material properties for biomedical applications.</li>
-          <li>Proficiency in laboratory protocols and technical data analysis.</li>
-        </ul>
+        <div class="exp-entry">
+          <span class="exp-role">Master's Research Candidate</span>
+          <span class="exp-meta">University of Toronto</span>
+          <ul>
+            <li>Investigated material properties for advanced biomedical applications.</li>
+            <li>Developed proficiency in laboratory protocols and technical data analysis.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="bento-item" onclick="this.classList.toggle('active')">
       <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-      <p>Master's degree from U of T.</p>
+      <p>U of T Graduate.</p>
       <div class="details">
-        <ul>
-          <li><strong>University of Toronto</strong> - Master of Engineering in Materials Science.</li>
-          <li><strong>Certifications:</strong> Pursuing Lean Six Sigma Yellow Belt & SOLIDWORKS Foundations.</li>
-        </ul>
+        <div class="exp-entry">
+          <span class="exp-role">Master of Engineering</span>
+          <span class="exp-meta">Materials Science & Engineering</span>
+          <p class="text-xs mt-2" style="font-size: 13px;">Specializing in Biomedical Engineering.</p>
+        </div>
       </div>
     </div>
 
     <div class="bento-item" onclick="this.classList.toggle('active')">
       <h3><i class="fa-solid fa-users"></i> Activities</h3>
-      <p>Leadership and teamwork.</p>
+      <p>Leadership & Interests.</p>
       <div class="details">
         <ul>
-          <li>Volunteering and community engagement projects.</li>
-          <li>Active interest in tech communities and NBA (Toronto Raptors fan).</li>
+          <li><strong>Lean Six Sigma:</strong> Pursuing Yellow Belt Certification.</li>
+          <li><strong>Tech:</strong> Learning Python and SOLIDWORKS Foundations.</li>
+          <li><strong>Personal:</strong> Active fan of the Toronto Raptors.</li>
         </ul>
       </div>
     </div>
 
     <div class="bento-item" onclick="location.href='about.html'">
       <h3><i class="fa-solid fa-user"></i> About Me</h3>
-      <p>Discover my story and professional goals.</p>
+      <p>My career goals and story.</p>
     </div>
 
   </div>
