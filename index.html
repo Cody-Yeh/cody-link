@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cody Yeh | Portfolio</title>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -14,7 +13,7 @@
       --primary-text: #2d3436;
       --secondary-text: #636e72;
       --accent-color: #333;
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     body {
@@ -70,6 +69,7 @@
       gap: 20px;
       width: 100%;
       max-width: 800px;
+      transition: all 0.5s ease;
     }
 
     .bento-item {
@@ -80,16 +80,21 @@
       transition: var(--transition);
       cursor: pointer;
       overflow: hidden;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
     }
 
-    .bento-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
-
-    /* Highlighted Work Experience */
+    /* 預設 Work Experience 佔兩欄 */
     .work-exp { grid-column: span 2; }
+
+    /* 重點：當卡片被點擊 (Active) 時放大並佔據全寬 */
+    .bento-item.active {
+      grid-column: span 2 !important; /* 強制變全寬 */
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      z-index: 10;
+    }
 
     .bento-item h3 {
       margin: 0 0 10px 0;
@@ -104,13 +109,14 @@
     /* Accordion Content */
     .details {
       max-height: 0;
+      opacity: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease-in-out;
-      margin-top: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
     }
 
     .bento-item.active .details {
-      max-height: 800px;
+      max-height: 1000px;
+      opacity: 1;
       margin-top: 20px;
       padding-top: 20px;
       border-top: 1px solid #eee;
@@ -119,12 +125,12 @@
     .details ul {
       padding-left: 20px;
       color: #444;
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.8;
       margin: 0;
     }
 
-    .details li { margin-bottom: 8px; }
+    .details li { margin-bottom: 12px; }
 
     /* Footer Buttons */
     .resume-section { margin-top: 40px; text-align: center; }
@@ -141,10 +147,9 @@
     }
     .resume-btn:hover { background: #000; transform: scale(1.05); }
 
-    /* Responsive Design */
     @media (max-width: 600px) {
       .bento-grid { grid-template-columns: 1fr; }
-      .work-exp { grid-column: span 1; }
+      .bento-item.active, .work-exp { grid-column: span 1 !important; }
       h1 { font-size: 30px; }
     }
   </style>
@@ -167,7 +172,7 @@
 
   <div class="bento-grid">
     
-    <div class="bento-item work-exp" onclick="this.classList.toggle('active')">
+    <div class="bento-item work-exp" onclick="toggleCard(this)">
       <h3><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
       <p>Technical expertise in clinical engineering and process optimization.</p>
       <div class="details">
@@ -179,7 +184,7 @@
       </div>
     </div>
 
-    <div class="bento-item" onclick="this.classList.toggle('active')">
+    <div class="bento-item" onclick="toggleCard(this)">
       <h3><i class="fa-solid fa-flask"></i> Research</h3>
       <p>Academic focus on materials science.</p>
       <div class="details">
@@ -190,7 +195,7 @@
       </div>
     </div>
 
-    <div class="bento-item" onclick="this.classList.toggle('active')">
+    <div class="bento-item" onclick="toggleCard(this)">
       <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
       <p>Master's degree from U of T.</p>
       <div class="details">
@@ -201,7 +206,7 @@
       </div>
     </div>
 
-    <div class="bento-item" onclick="this.classList.toggle('active')">
+    <div class="bento-item" onclick="toggleCard(this)">
       <h3><i class="fa-solid fa-users"></i> Activities</h3>
       <p>Leadership and teamwork.</p>
       <div class="details">
@@ -224,6 +229,27 @@
       <i class="fa-solid fa-download"></i> Download Full CV
     </a>
   </section>
+
+  <script>
+    function toggleCard(card) {
+      const allCards = document.querySelectorAll('.bento-item');
+      
+      // 如果點擊的是已經 active 的卡片，就關閉它
+      if (card.classList.contains('active')) {
+        card.classList.remove('active');
+      } else {
+        // 先移除所有卡片的 active 狀態
+        allCards.forEach(c => c.classList.remove('active'));
+        // 為當前點擊的卡片加上 active
+        card.classList.add('active');
+        
+        // 可選：平滑捲動到該區塊
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 300);
+      }
+    }
+  </script>
 
 </body>
 </html>
